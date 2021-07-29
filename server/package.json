@@ -1,0 +1,37 @@
+{
+  "name": "api",
+  "main": "app.js",
+  "version": "0.0.1",
+  "description": "",
+  "repository": "",
+  "license": "",
+  "dependencies": {
+    "@sendgrid/mail": "^7.4.5",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "connect-session-sequelize": "^7.1.1",
+    "crypto": "^1.0.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "lodash": "^4.17.21",
+    "moment-timezone": "^0.5.33",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.2",
+    "node-ask": "^1.0.1",
+    "node-cron": "^3.0.0",
+    "passport": "^0.4.1",
+    "passport-google-oauth20": "^2.0.0",
+    "passport-http-bearer": "^1.0.1",
+    "passport-local": "^1.0.0",
+    "pg": "^8.6.0",
+    "sequelize": "^6.6.5",
+    "validator": "^13.6.0"
+  },
+  "scripts": {
+    "start": "nodemon --inspect app.js",
+    "node": "node app.js",
+    "pm2": "pm2 start ./pm2.json --no-colors",
+    "nodemon": "nodemon --inspect app.js"
+  }
+}
