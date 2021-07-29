@@ -163,7 +163,7 @@ class UserCtrl {
     });
   }
 
-  static list (user) {
+  static async list (user) {
     if (!permissions.isSuperuser(user)) {
       throw new Error('Access denied');
     }
@@ -180,7 +180,7 @@ class UserCtrl {
     return User.findAll(query);
   }
 
-  static findById (id, user) {
+  static async findById (id, user) {
     if (id !== user?.id && !permissions.isSuperuser(user)) {
       throw new Error('User id not match!');
     }
@@ -226,12 +226,13 @@ class UserCtrl {
       where: { userId }
     });
 
-    let createdRestoreToken;
-    crypto.randomBytes(40, (ex, buf) => {
-      const token = buf.toString('hex');
+    const createdRestoreToken = await new Promise((resolve, reject) => {
+      crypto.randomBytes(40, (ex, buf) => {
+        const token = buf.toString('hex');
 
-      createdRestoreToken = RestoreToken.create({
-        userId, token
+        return resolve(RestoreToken.create({
+          userId, token
+        }));
       });
     });
 

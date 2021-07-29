@@ -54,7 +54,7 @@ class AgentCtrl {
     }
   }
 
-  static findById (agentId, orgId, user) {
+  static async findById (agentId, orgId, user) {
     if (orgId !== user.orgId && !permissions.isSuperuser(user)) {
       throw new Error('Org id not match!');
     }
